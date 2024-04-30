@@ -1,0 +1,121 @@
+Site Bertolini Motos
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Bertolini Motos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://lh3.googleusercontent.com/p/AF1QipN60BZ0lYXzHCdqK6bBTaNKQ1_m_W4YGfksH8CH=s680-w680-h510');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Bem-vindo ao Bertolini Motos</h1>
+
+    <div class="form-group">
+        <label for="customerName">Seu Nome:</label>
+        <input type="text" id="customerName" placeholder="Digite seu nome" required>
+    </div>
+
+    <div class="form-group">
+        <label for="customerPhone">Seu Número de Celular (Opcional):</label>
+        <input type="tel" id="customerPhone" placeholder="Digite seu número de celular">
+    </div>
+
+    <div class="form-group">
+        <label for="customerEmail">Seu Email (Opcional):</label>
+        <input type="email" id="customerEmail" placeholder="Digite seu email">
+    </div>
+
+    <div class="form-group">
+        <label for="budget">Quer fazer um orçamento?</label>
+        <textarea id="budget" placeholder="Descreva o que você precisa"></textarea>
+    </div>
+
+    <button class="btn" onclick="sendWhatsApp()">Enviar via WhatsApp</button>
+</div>
+
+<script>
+    function sendWhatsApp() {
+        const customerName = document.getElementById('customerName').value.trim();
+        const customerPhone = document.getElementById('customerPhone').value.trim();
+        const customerEmail = document.getElementById('customerEmail').value.trim();
+        const budget = document.getElementById('budget').value.trim();
+
+        let message = `Olá! Meu nome é ${customerName}. Gostaria de fazer um pedido. Detalhes:\n\n`;
+
+        if (customerPhone !== '') {
+            message += `Número de Celular: ${customerPhone}\n\n`;
+        }
+
+        if (customerEmail !== '') {
+            message += `Email: ${customerEmail}\n\n`;
+        }
+
+        if (budget !== '') {
+            message += `Orçamento: ${budget}`;
+        }
+
+        // Substitua 'SEU-NUMERO-DO-WHATSAPP' pelo seu número de WhatsApp
+        const whatsappNumber = '+5527995737517';
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        // Abre o link do WhatsApp
+        window.open(whatsappURL);
+    }
+</script>
+
+</body>
+</html>
